@@ -1,0 +1,58 @@
+package cctcollege.view;
+
+import cctcollege.model.Employee;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author asafeds
+ */
+public class HospitalSystemMenu {
+    
+    private Scanner scanner;
+
+    public HospitalSystemMenu() {
+        scanner = new Scanner(System.in);
+    }
+    
+    public void showMenu(){
+        System.out.println("==== HOSPITAL SYSTEM ====");
+        System.out.println("1. SORT");
+        System.out.println("2. SEARCH");
+        System.out.println("3. ADD RECORDS");
+        System.out.println("4. EXIT");
+        System.out.println("=========================");
+        System.out.print("Choose an option: ");
+    }
+    
+    public void showConfigurationMenu(){
+        System.out.println("============ HOSPITAL SYSTEM ============");
+        System.out.println("1. PRESS 'ENTER' TO LOAD NAMES FROM FILE ");
+        System.out.println("     (File: Applicants_Form.txt)   ");
+        System.out.print("=========================================");
+        scanner.nextLine();
+    }
+    
+    public void showRecordsMenu(){
+        System.out.println("====== ADD RECORDS =====");
+        System.out.println("1. ADD EMPLOYEE");
+        System.out.println("2. GENERATE RANDOM EMPLOYEE");
+        System.out.println("3. RETURN TO MAIN MENU");
+        System.out.println("=========================");
+        System.out.print("Choose an option: ");
+    }
+
+    public void displayEmployees(List<Employee> list){
+        System.out.println("==== HOSPITAL SYSTEM || EMPLOYEES ====");
+        list.forEach(e -> System.out.println(e.getName()));
+        System.out.println("=========================");
+        System.out.print("Press any button to continue: ");
+        scanner.nextLine();
+    }     
+    
+    public void displayFileLoadedSuccessfuly(){
+        System.out.println("[ File loaded successfully ]");
+    }  
+    
+}

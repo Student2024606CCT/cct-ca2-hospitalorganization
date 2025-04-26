@@ -10,6 +10,15 @@ public class Employee {
     private Manager managerType;
     private Department departmentType;
 
+    public Employee(String name, 
+            Manager managerType, 
+            Department departmentType) {
+        this.name = name;
+        this.managerType = managerType;
+        this.departmentType = departmentType;
+    }
+
+
     public String getName() {
         return name;
     }
@@ -33,7 +42,6 @@ public class Employee {
     public void setDepartmentType(Department departmentType) {
         this.departmentType = departmentType;
     }
-    
     
     
 }
