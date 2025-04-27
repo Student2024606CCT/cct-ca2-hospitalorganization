@@ -4,7 +4,7 @@ package cctcollege.model;
  *
  * @author asafeds
  */
-public class Employee {
+public class Employee implements Comparable<Employee> {
     
     private String name;
     private Manager managerType;
@@ -41,6 +41,11 @@ public class Employee {
 
     public void setDepartmentType(Department departmentType) {
         this.departmentType = departmentType;
+    }
+
+    @Override
+    public int compareTo(Employee e) {
+        return this.name.compareTo(e.getName());
     }
     
     
