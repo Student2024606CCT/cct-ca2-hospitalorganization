@@ -1,8 +1,8 @@
 package cctcollege.controller;
 
 import cctcollege.model.Employee;
+import cctcollege.util.MyEmployeeList;
 import cctcollege.util.GenerateRandomEmployeeUtil;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,14 +11,15 @@ import java.util.List;
  */
 public class HospitalSystemController {
     
-    private final List<Employee> employees;
+    private final MyEmployeeList employees;
 
     public HospitalSystemController() {
-        this.employees = new ArrayList<>();
+        employees = new MyEmployeeList();
     }
     
     public void loadEmployeesFromFile(){
-        List<String> names = loadNamesFromFile();
+        //DUMMY NAMES .... 
+        List<String> names = GenerateRandomEmployeeUtil.getRandomNames();
         names.forEach(name -> {
             employees.add(new Employee(name,
                 GenerateRandomEmployeeUtil.getRandomManager(),
@@ -26,16 +27,18 @@ public class HospitalSystemController {
             );
         });
     }
+
+    public void sortEmployees(){
+        employees.sort();
+    }
     
-    // TODO - Load names from real file
-    private List<String> loadNamesFromFile(){
-        // Mocked for while ... 
-        return GenerateRandomEmployeeUtil.getRandomNames();
+    public Employee searchEmployee(String name){
+        return employees.searchByName(name);
     }
 
-    public List<Employee> getEmployees() {
+    public MyEmployeeList getEmployees() {
         return employees;
-    }
+    } 
         
     
 }

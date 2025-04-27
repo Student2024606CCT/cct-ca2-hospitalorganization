@@ -1,6 +1,7 @@
 package cctcollege;
 
 import cctcollege.controller.HospitalSystemController;
+import cctcollege.model.Employee;
 import cctcollege.view.HospitalSystemMenu;
 
 /**
@@ -19,10 +20,27 @@ public class CA2HospitalOrganization {
         view.showConfigurationMenu();
         controller.loadEmployeesFromFile();
         view.displayFileLoadedSuccessfuly();
-        view.displayEmployees(controller.getEmployees());
         
         // Main menu ... 
-        view.showMenu();
+        int menuChoice;
+        do {
+            menuChoice = view.showMenu();
+            switch (menuChoice) {
+                case HospitalSystemMenu.SORT -> {
+                    controller.sortEmployees();
+                    view.displaySortSuccessfuly();
+                    view.displayEmployees(controller.getEmployees());
+                }
+                case HospitalSystemMenu.SEARCH -> {
+                    String name = view.askForEmployeeName();
+                    view.displayEmployee(controller.searchEmployee(name));
+                }
+                case HospitalSystemMenu.ADD_RECORDS -> {
+                    view.showRecordsMenu();
+                    //TODO
+                }
+            }
+        } while (menuChoice != HospitalSystemMenu.EXIT);
         
     }
     

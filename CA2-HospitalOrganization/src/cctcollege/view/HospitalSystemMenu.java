@@ -10,13 +10,18 @@ import java.util.Scanner;
  */
 public class HospitalSystemMenu {
     
-    private Scanner scanner;
+    public static final int SORT = 1;
+    public static final int SEARCH = 2;
+    public static final int ADD_RECORDS = 3;
+    public static final int EXIT = 4;
+    
+    private final Scanner scanner;
 
     public HospitalSystemMenu() {
         scanner = new Scanner(System.in);
     }
     
-    public void showMenu(){
+    public int showMenu(){
         System.out.println("==== HOSPITAL SYSTEM ====");
         System.out.println("1. SORT");
         System.out.println("2. SEARCH");
@@ -24,6 +29,7 @@ public class HospitalSystemMenu {
         System.out.println("4. EXIT");
         System.out.println("=========================");
         System.out.print("Choose an option: ");
+        return askForNumber();
     }
     
     public void showConfigurationMenu(){
@@ -34,13 +40,13 @@ public class HospitalSystemMenu {
         scanner.nextLine();
     }
     
-    public void showRecordsMenu(){
+    public int showRecordsMenu(){
         System.out.println("====== ADD RECORDS =====");
         System.out.println("1. ADD EMPLOYEE");
         System.out.println("2. GENERATE RANDOM EMPLOYEE");
-        System.out.println("3. RETURN TO MAIN MENU");
         System.out.println("=========================");
         System.out.print("Choose an option: ");
+        return askForNumber();
     }
 
     public void displayEmployees(List<Employee> list){
@@ -49,10 +55,38 @@ public class HospitalSystemMenu {
         System.out.println("=========================");
         System.out.print("Press any button to continue: ");
         scanner.nextLine();
-    }     
+    }   
+    
+    public void displayEmployee(Employee employee){
+        System.out.println("==== EMPLOYEE ====");
+        System.out.println("Name: " + employee.getName());
+        System.out.println("Manager: " + employee.getManagerType());
+        System.out.println("Departament: " + employee.getDepartmentType());
+        System.out.println("===================");
+        System.out.print("Press any button to continue: ");
+        scanner.nextLine();
+    } 
     
     public void displayFileLoadedSuccessfuly(){
         System.out.println("[ File loaded successfully ]");
-    }  
+    }
+    
+    public void displaySortSuccessfuly(){
+        System.out.println("[ Employees sorted successfully ]");
+    }
+    
+    public String askForEmployeeName(){
+        System.out.print("Please, inform the employee's name: ");
+        return scanner.nextLine();
+    }
+    
+    private int askForNumber(){
+        try{
+            String input = scanner.nextLine();
+            return Integer.parseInt(input);
+        }catch(NumberFormatException e){
+            return 0;
+        }
+    }
     
 }
