@@ -14,6 +14,35 @@ import java.util.Random;
 public class GenerateRandomEmployeeUtil {
     
     private static final Random random = new Random();
+    private static final List<String> names = Arrays.asList(
+            /**
+             * 
+             * 20 NAMES
+             * Default names as data to generate a random employee
+             * - getRandomName();
+             * 
+             */
+            "Emily Johnson",
+            "Liam Smith",
+            "Olivia Brown",
+            "Noah Davis",
+            "Ava Wilson",
+            "Ethan Thompson",
+            "Isabella Martinez",
+            "Mason Anderson",
+            "Sophia Taylor",
+            "James Moore",
+            "Mia Harris",
+            "Benjamin Clark",
+            "Charlotte Lewis",
+            "Elijah Walker",
+            "Amelia Hall",
+            "Lucas Young",
+            "Harper Allen",
+            "Logan King",
+            "Emma Scott",
+            "Jackson Wright"
+        );
     
     /**
      * Get a random DEPARTAMENT type 
@@ -38,33 +67,22 @@ public class GenerateRandomEmployeeUtil {
     }
     
     /**
+     * Get a random Employee NAME  
+     * @return 
+     */
+
+    public static String getRandomName() {
+        int index = random.nextInt(names.size());
+        return names.get(index);
+    }
+    
+    /**
      * DUMMY DATA(20 NAMES)
      * @return 
      */
     
     public static List<String> getRandomNames(){
-        return Arrays.asList(
-            "Emily Johnson",
-            "Liam Smith",
-            "Olivia Brown",
-            "Noah Davis",
-            "Ava Wilson",
-            "Ethan Thompson",
-            "Isabella Martinez",
-            "Mason Anderson",
-            "Sophia Taylor",
-            "James Moore",
-            "Mia Harris",
-            "Benjamin Clark",
-            "Charlotte Lewis",
-            "Elijah Walker",
-            "Amelia Hall",
-            "Lucas Young",
-            "Harper Allen",
-            "Logan King",
-            "Emma Scott",
-            "Jackson Wright"
-        );
+        return names;
     }
     
 }

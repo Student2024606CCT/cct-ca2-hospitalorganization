@@ -1,7 +1,9 @@
 package cctcollege;
 
 import cctcollege.controller.HospitalSystemController;
+import cctcollege.model.Department;
 import cctcollege.model.Employee;
+import cctcollege.model.Manager;
 import cctcollege.view.HospitalSystemMenu;
 
 /**
@@ -26,6 +28,9 @@ public class CA2HospitalOrganization {
         do {
             menuChoice = view.showMenu();
             switch (menuChoice) {
+                case HospitalSystemMenu.LIST -> {
+                    view.displayEmployees(controller.getEmployees());
+                }
                 case HospitalSystemMenu.SORT -> {
                     controller.sortEmployees();
                     view.displaySortSuccessfuly();
@@ -35,9 +40,18 @@ public class CA2HospitalOrganization {
                     String name = view.askForEmployeeName();
                     view.displayEmployee(controller.searchEmployee(name));
                 }
-                case HospitalSystemMenu.ADD_RECORDS -> {
-                    view.showRecordsMenu();
-                    //TODO
+                case HospitalSystemMenu.ADD_EMPLOYEE -> {
+                    String name = view.askForEmployeeName();
+                    Department dprt = view.askForDepartment();
+                    Manager mnr = view.askForManager();
+                    Employee employee = controller.addEmployee(name, mnr, dprt);
+                    view.displayEmployeeAddedSuccessfuly(employee);
+                    view.displayEmployee(employee);
+                }
+                case HospitalSystemMenu.GENERATE_EMPLOYEE -> {
+                    Employee randomOne = controller.newRandomEmployee();
+                    view.displayEmployeeAddedSuccessfuly(randomOne);
+                    view.displayEmployee(randomOne);
                 }
             }
         } while (menuChoice != HospitalSystemMenu.EXIT);
