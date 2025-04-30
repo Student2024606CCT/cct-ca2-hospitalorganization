@@ -8,7 +8,8 @@ import cctcollege.view.HospitalMenu;
 import cctcollege.view.HospitalSystemView;
 
 /**
- *
+ * Main class
+ * 
  * @author asafeds
  */
 public class CA2HospitalOrganization {
@@ -58,6 +59,7 @@ public class CA2HospitalOrganization {
                 }
             }
         }
+        
         
     }
     

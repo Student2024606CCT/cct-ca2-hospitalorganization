@@ -60,48 +60,75 @@ public class MyEmployeeList
         this.set(i, this.get(j));
         this.set(j, temp);
     }
-    
-    /**
-     * 
-     * =========================================
-     * ============ LINEAR SEARCH ==============
-     * =========================================
-     *
-     * @param name
-     * @return Employee
-     */
-    private Employee linearSearch(String name) {
-        return linearSearchRecursive(name, 0);
-    }
 
     /**
-     * 
-     * Method to start a recursive linear search
-     * 
+     * ========================================= 
+     * ============ LINEAR SEARCH ============== 
+     * =========================================
+     *
+     * Recursive linear search implementation.
+     *
      * @param name
      * @param index
      * @return Employee.
      */
     private Employee linearSearchRecursive(String name, int index) {
         // Reached the end of the list
-        if (index >= this.size()) return null;
+        if (index >= size()) return null;
         // Found the employee
-        if (this.get(index).getName().contains(name)) return this.get(index); 
+        Employee employee = this.get(index);
+        if (employee.getName().equalsIgnoreCase(name)) return employee;
         // Recurse to the next index
-        return linearSearchRecursive(name, index + 1); 
+        return linearSearchRecursive(name, index + 1);
     }
-    
-    
+
+    /**
+     * ========================================= 
+     * ============ BINARY SEARCH ============== 
+     * =========================================.
+     *
+     * Recursive binary search implementation.
+     *
+     * @param name The name to search for.
+     * @param low The starting index of the search range.
+     * @param high The ending index of the search range.
+     * @return The Employee if found, or null if not found.
+     */
+    private Employee binarySearchRecursive(String name, int low, int high) {
+        if (low > high) return null; // Base case: name not found
+        int mid = (low + high) / 2;
+        Employee midEmployee = this.get(mid);
+        int comparison = midEmployee.getName().compareToIgnoreCase(name);
+        if (comparison == 0) {
+            // Name found
+            return midEmployee;
+        } else if (comparison > 0) {
+            // Search left half
+            return binarySearchRecursive(name, low, mid - 1);
+        } else {
+            // Search right half
+            return binarySearchRecursive(name, mid + 1, high);
+        }
+    }
+
     /**
      * 
-     * Search employee by name.
+     * Searches for an employee by name using either binary search or linear
+     * search, depending on whether the list is currently sorted.
      * 
+     * If the list is sorted, a  binary search is used.
+     * If the list is not sorted, a linear search is used.
+     *
      * @param name
-     * @return Employee
+     * @return
      */
     @Override
     public Employee searchByName(String name) {
-        return linearSearch(name);
+        if (isSorted) {
+            return binarySearchRecursive(name, 0, this.size() - 1);
+        } else {
+            return linearSearchRecursive(name, 0);
+        }
     }
 
     
@@ -120,9 +147,5 @@ public class MyEmployeeList
         isSorted = Boolean.FALSE;
         return super.add(e);
     }
-
-    
-    
-    
 
 }
