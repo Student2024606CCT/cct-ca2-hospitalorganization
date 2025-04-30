@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class MyEmployeeList 
         extends ArrayList<Employee> 
-        implements QuickSort {
+        implements QuickSort,Search<Employee>{
     
     /**
      * isSorted - Variable responsible for defining 
@@ -14,6 +14,11 @@ public class MyEmployeeList
     private boolean isSorted = Boolean.FALSE;
     
     /**
+     * 
+     * =========================================
+     * ============== QUICK SORT ===============
+     * =========================================
+     * 
      * Sorts the list using the QuickSort algorithm.
      */
     @Override
@@ -35,7 +40,7 @@ public class MyEmployeeList
             qsRecursive(pivotIndex + 1, high);
         }
     }
-
+    
     private int qsPartition(int low, int high) {
         Employee pivot = this.get(high); // Choose the last element as pivot
         int i = low - 1; // Index of the smaller element
@@ -55,24 +60,50 @@ public class MyEmployeeList
         this.set(i, this.get(j));
         this.set(j, temp);
     }
-
+    
     /**
-     *
-     * Mock - Temporary Search ....
-     *
-     * TO DO - Implement real search by name for employees
+     * 
+     * =========================================
+     * ============ LINEAR SEARCH ==============
+     * =========================================
      *
      * @param name
-     * @return
+     * @return Employee
      */
-    public Employee searchByName(String name) {
-        for (Employee employee : this) {
-            if (employee.getName().contains(name)) {
-                return employee;
-            }
-        }
-        return null;
+    private Employee linearSearch(String name) {
+        return linearSearchRecursive(name, 0);
     }
+
+    /**
+     * 
+     * Method to start a recursive linear search
+     * 
+     * @param name
+     * @param index
+     * @return Employee.
+     */
+    private Employee linearSearchRecursive(String name, int index) {
+        // Reached the end of the list
+        if (index >= this.size()) return null;
+        // Found the employee
+        if (this.get(index).getName().contains(name)) return this.get(index); 
+        // Recurse to the next index
+        return linearSearchRecursive(name, index + 1); 
+    }
+    
+    
+    /**
+     * 
+     * Search employee by name.
+     * 
+     * @param name
+     * @return Employee
+     */
+    @Override
+    public Employee searchByName(String name) {
+        return linearSearch(name);
+    }
+
     
     /**
      * 

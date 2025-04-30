@@ -55,11 +55,15 @@ public class HospitalSystemMenu {
     }
 
     public void displayEmployee(Employee employee) {
-        System.out.println("==== EMPLOYEE ====");
-        System.out.println("Name: " + employee.getName());
-        System.out.println("Manager: " + employee.getManagerType());
-        System.out.println("Departament: " + employee.getDepartmentType());
-        System.out.println("===================");
+        if(employee == null){
+            System.out.println("[ Sorry, nothing found. ]");
+        }else{
+            System.out.println("==== EMPLOYEE ====");
+            System.out.println("Name: " + employee.getName());
+            System.out.println("Manager: " + employee.getManagerType());
+            System.out.println("Departament: " + employee.getDepartmentType());
+            System.out.println("===================");
+        }
         System.out.print("Press any button to continue: ");
         scanner.nextLine();
     }
