@@ -3,15 +3,28 @@ package cctcollege.util;
 import cctcollege.model.Employee;
 import java.util.ArrayList;
 
-public class MyEmployeeList extends ArrayList<Employee> {
-
+public class MyEmployeeList 
+        extends ArrayList<Employee> 
+        implements QuickSort {
+    
+    /**
+     * isSorted - Variable responsible for defining 
+     * the state of the list whether it is ordered or not
+     */
+    private boolean isSorted = Boolean.FALSE;
+    
     /**
      * Sorts the list using the QuickSort algorithm.
      */
+    @Override
     public void quickSort() {
-        if (this.size() > 1) {
-            qsRecursive(0, this.size() - 1);
-        }
+        // QuickSort has poor performance when the list is already sorted, 
+        // so we have state control to not execute the algorithm 
+        // if the list is already sorted.
+        if(isSorted || this.size() <= 1) return;
+        // Sorting list ... 
+        qsRecursive(0, this.size() - 1);
+        isSorted = Boolean.TRUE;
     }
 
     private void qsRecursive(int low, int high) {
@@ -60,5 +73,25 @@ public class MyEmployeeList extends ArrayList<Employee> {
         }
         return null;
     }
+    
+    /**
+     * 
+     * Overriding method to ensure 
+     * that the list state will change to new record
+     * (isSorted = false) 
+     * 
+     * @param e
+     * @return 
+     */
+
+    @Override
+    public boolean add(Employee e) {
+        isSorted = Boolean.FALSE;
+        return super.add(e);
+    }
+
+    
+    
+    
 
 }
