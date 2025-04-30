@@ -42,6 +42,14 @@ public class HospitalSystemView {
         System.out.print("Press any button to continue: ");
         scanner.nextLine();
     }
+    
+    public void displayEmployees(List<Employee> list, int max) {
+        System.out.println("====== HOSPITAL SYSTEM || EMPLOYEES("+ max +") =====");
+        list.stream().limit(max).forEach(e -> System.out.println(e.getName()));
+        System.out.println("=========================");
+        System.out.print("Press any button to continue: ");
+        scanner.nextLine();
+    }
 
     public void displayEmployee(Employee employee) {
         if(employee == null){

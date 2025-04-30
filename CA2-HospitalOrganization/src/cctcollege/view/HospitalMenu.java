@@ -9,9 +9,9 @@ package cctcollege.view;
  */
 public enum HospitalMenu {
     
-                 LIST("LIST"),
-                 SORT("SORT"),
-               SEARCH("SEARCH"),
+                 LIST("LIST ALL EMPLOYEES"),
+                 SORT("SORT EMPLOYEES "),
+               SEARCH("SEARCH EMPLOYEE BY NAME"),
          ADD_EMPLOYEE("ADD EMPLOYEE"),
     GENERATE_EMPLOYEE("GENERATE RANDOM EMPLOYEE"),
                  EXIT("EXIT");

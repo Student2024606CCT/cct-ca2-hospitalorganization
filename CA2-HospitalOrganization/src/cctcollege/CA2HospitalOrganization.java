@@ -35,7 +35,7 @@ public class CA2HospitalOrganization {
                 case HospitalMenu.SORT -> {
                     controller.sortEmployees();
                     view.displaySortSuccessfuly();
-                    view.displayEmployees(controller.getEmployees());
+                    view.displayEmployees(controller.getEmployees(), 20);
                 }
                 case HospitalMenu.SEARCH -> {
                     String name = view.askForEmployeeName();
