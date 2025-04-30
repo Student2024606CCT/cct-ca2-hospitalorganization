@@ -4,7 +4,8 @@ import cctcollege.controller.HospitalSystemController;
 import cctcollege.model.Department;
 import cctcollege.model.Employee;
 import cctcollege.model.Manager;
-import cctcollege.view.HospitalSystemMenu;
+import cctcollege.view.HospitalMenu;
+import cctcollege.view.HospitalSystemView;
 
 /**
  *
@@ -16,7 +17,7 @@ public class CA2HospitalOrganization {
     public static void main(String[] args) {
         // Setting variables ...
         HospitalSystemController controller = new HospitalSystemController();
-        HospitalSystemMenu view = new HospitalSystemMenu();
+        HospitalSystemView view = new HospitalSystemView();
         
         // Starting system | Configuration menu ... 
         view.showConfigurationMenu();
@@ -24,23 +25,23 @@ public class CA2HospitalOrganization {
         view.displayFileLoadedSuccessfuly();
         
         // Main menu ... 
-        int menuChoice;
-        do {
-            menuChoice = view.showMenu();
-            switch (menuChoice) {
-                case HospitalSystemMenu.LIST -> {
+        while(true) {
+            HospitalMenu menuOption = view.showMenu();
+            if(menuOption == null) continue; //Invalid user choice
+            switch (menuOption) {
+                case HospitalMenu.LIST -> {
                     view.displayEmployees(controller.getEmployees());
                 }
-                case HospitalSystemMenu.SORT -> {
+                case HospitalMenu.SORT -> {
                     controller.sortEmployees();
                     view.displaySortSuccessfuly();
                     view.displayEmployees(controller.getEmployees());
                 }
-                case HospitalSystemMenu.SEARCH -> {
+                case HospitalMenu.SEARCH -> {
                     String name = view.askForEmployeeName();
                     view.displayEmployee(controller.searchEmployee(name));
                 }
-                case HospitalSystemMenu.ADD_EMPLOYEE -> {
+                case HospitalMenu.ADD_EMPLOYEE -> {
                     String name = view.askForEmployeeName();
                     Department dprt = view.askForDepartment();
                     Manager mnr = view.askForManager();
@@ -48,13 +49,15 @@ public class CA2HospitalOrganization {
                     view.displayEmployeeAddedSuccessfuly(employee);
                     view.displayEmployee(employee);
                 }
-                case HospitalSystemMenu.GENERATE_EMPLOYEE -> {
+                case HospitalMenu.GENERATE_EMPLOYEE -> {
                     Employee randomOne = controller.newRandomEmployee();
                     view.displayEmployeeAddedSuccessfuly(randomOne);
                     view.displayEmployee(randomOne);
+                }case HospitalMenu.EXIT -> {
+                    return;
                 }
             }
-        } while (menuChoice != HospitalSystemMenu.EXIT);
+        }
         
     }
     

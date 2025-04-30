@@ -10,44 +10,33 @@ import java.util.Scanner;
  *
  * @author asafeds
  */
-public class HospitalSystemMenu {
-
-    public static final int LIST = 1;
-    public static final int SORT = 2;
-    public static final int SEARCH = 3;
-    public static final int ADD_EMPLOYEE = 4;
-    public static final int GENERATE_EMPLOYEE = 5;
-    public static final int EXIT = 6;
+public class HospitalSystemView {
 
     private final Scanner scanner;
 
-    public HospitalSystemMenu() {
+    public HospitalSystemView() {
         scanner = new Scanner(System.in);
     }
 
-    public int showMenu() {
-        System.out.println("==== HOSPITAL SYSTEM ====");
-        System.out.println("1. LIST");
-        System.out.println("2. SORT");
-        System.out.println("3. SEARCH");
-        System.out.println("4. ADD EMPLOYEE");
-        System.out.println("5. GENERATE RANDOM EMPLOYEE");
-        System.out.println("6. EXIT");
-        System.out.println("=========================");
-        System.out.print("Choose an option: ");
-        return askForNumber();
+    public HospitalMenu showMenu() {
+        HospitalMenu menuChoice;
+        System.out.println("============ HOSPITAL SYSTEM ============");
+        menuChoice = (HospitalMenu) askFromEnumOptions(HospitalMenu.values());
+        System.out.println("=========================================");
+        return menuChoice;
+
     }
 
     public void showConfigurationMenu() {
         System.out.println("============ HOSPITAL SYSTEM ============");
-        System.out.println("1. PRESS 'ENTER' TO LOAD NAMES FROM FILE ");
+        System.out.println(" PRESS 'ENTER' TO LOAD NAMES FROM FILE ");
         System.out.println("     (File: Applicants_Form.txt)   ");
         System.out.print("=========================================");
         scanner.nextLine();
     }
 
     public void displayEmployees(List<Employee> list) {
-        System.out.println("==== HOSPITAL SYSTEM || EMPLOYEES ====");
+        System.out.println("====== HOSPITAL SYSTEM || EMPLOYEES =====");
         list.forEach(e -> System.out.println(e.getName()));
         System.out.println("=========================");
         System.out.print("Press any button to continue: ");
@@ -103,7 +92,7 @@ public class HospitalSystemMenu {
         }
         int choice;
         while (true) {
-            System.out.print("Enter your choice (1-" + options.length + "): ");
+            System.out.print("Choose an option(1-" + options.length + "): ");
             choice = askForNumber();
             if (choice >= 1 && choice <= options.length) {
                 return options[choice - 1]; // Adjust for 0-based index
@@ -114,7 +103,7 @@ public class HospitalSystemMenu {
     }
 
     public String askForEmployeeName() {
-        System.out.print("Please, inform the employee's name: ");
+        System.out.print("Please, inform the employee's full name: ");
         return scanner.nextLine();
     }
 
