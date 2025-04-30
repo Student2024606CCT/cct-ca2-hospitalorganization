@@ -5,7 +5,6 @@ import cctcollege.model.Employee;
 import cctcollege.model.Manager;
 import cctcollege.util.MyEmployeeList;
 import cctcollege.util.GenerateRandomEmployeeUtil;
-import java.util.List;
 
 /**
  *
@@ -29,7 +28,7 @@ public class HospitalSystemController {
     }
 
     public void sortEmployees(){
-        employees.sort();
+        employees.quickSort();
     }
     
     public Employee searchEmployee(String name){
