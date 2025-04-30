@@ -5,12 +5,18 @@ import cctcollege.model.Employee;
 import cctcollege.model.Manager;
 import cctcollege.util.MyEmployeeList;
 import cctcollege.util.GenerateRandomEmployeeUtil;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 /**
  *
  * @author asafeds
  */
 public class HospitalSystemController {
+    
+    private final String FILE_TXT = "Applicants_Form.txt";
     
     private final MyEmployeeList employees;
 
@@ -19,12 +25,18 @@ public class HospitalSystemController {
     }
     
     public void loadEmployeesFromFile(){
-        // MOCK // DUMMY NAMES .... 
-        GenerateRandomEmployeeUtil.getRandomNames()
-            .forEach(name -> addEmployee(name,
+        try {
+            // Read all lines/names from the file and store them in the list
+            List<String> names = Files.readAllLines(Paths.get(FILE_TXT));
+            // Add employees from list of names
+            names.forEach(name -> addEmployee(name,
                 GenerateRandomEmployeeUtil.getRandomManager(),
                 GenerateRandomEmployeeUtil.getRandomDepartment())
             );
+        } catch (IOException e) {
+            // Print an error message if the file cannot be read
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
     }
 
     public void sortEmployees(){

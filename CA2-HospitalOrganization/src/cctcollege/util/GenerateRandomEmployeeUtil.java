@@ -14,34 +14,30 @@ import java.util.Random;
 public class GenerateRandomEmployeeUtil {
     
     private static final Random random = new Random();
-    private static final List<String> names = Arrays.asList(
-            /**
-             * 
-             * 20 NAMES
-             * Default names as data to generate a random employee
-             * - getRandomName();
-             * 
-             */
-            "Emily Johnson",
-            "Liam Smith",
-            "Olivia Brown",
-            "Noah Davis",
-            "Ava Wilson",
-            "Ethan Thompson",
-            "Isabella Martinez",
-            "Mason Anderson",
-            "Sophia Taylor",
-            "James Moore",
-            "Mia Harris",
-            "Benjamin Clark",
-            "Charlotte Lewis",
-            "Elijah Walker",
-            "Amelia Hall",
-            "Lucas Young",
-            "Harper Allen",
-            "Logan King",
-            "Emma Scott",
-            "Jackson Wright"
+    
+    /**
+     * Default names as list to select randomly 
+     */
+    private static final List<String> randomNames = Arrays.asList(
+            "Brody Matthews",
+            "Clara Bennett",
+            "Miles Foster",
+            "Naomi Hayes",
+            "Leo Griffin",
+            "Ruby Stephens",
+            "Asher Barnes",
+            "Alice Chapman",
+            "Eli Wheeler",
+            "Jade Franklin",
+            "Nolan Powers",
+            "Vivian Douglas",
+            "Austin Barrett",
+            "Ivy Malone",
+            "Caleb Norton",
+            "Elena Holt",
+            "Aaron Doyle",
+            "Daisy Harmon",
+            "Hunter Pierce"
         );
     
     /**
@@ -72,17 +68,8 @@ public class GenerateRandomEmployeeUtil {
      */
 
     public static String getRandomName() {
-        int index = random.nextInt(names.size());
-        return names.get(index);
-    }
-    
-    /**
-     * DUMMY DATA(20 NAMES)
-     * @return 
-     */
-    
-    public static List<String> getRandomNames(){
-        return names;
+        int index = random.nextInt(randomNames.size());
+        return randomNames.get(index);
     }
     
 }
