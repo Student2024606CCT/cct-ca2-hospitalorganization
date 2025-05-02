@@ -2,6 +2,8 @@ package cctcollege.model;
 
 /**
  *
+ * Enum Manager
+ * 
  * @author asafeds
  */
 public enum Manager {
@@ -18,10 +20,18 @@ public enum Manager {
     
     private final String name;
 
+    /**
+     * Manager Constructor
+     * @param name 
+     */
     private Manager(String name) {
         this.name = name;
     }
 
+    /**
+     * Return name when parse Manager to string
+     * @return 
+     */
     @Override
     public String toString() {
         return name;

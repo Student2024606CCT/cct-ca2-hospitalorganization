@@ -12,7 +12,12 @@ import java.util.Random;
  * @author asafeds
  */
 public class GenerateRandomEmployeeUtil {
-    
+  
+    /**
+     * An instance of Random used to generate random values throughout
+     * the application. This instance is shared and reused to avoid creating
+     * multiple Random objects unnecessarily.
+     */
     private static final Random random = new Random();
     
     /**

@@ -18,6 +18,10 @@ public enum HospitalMenu {
                  
     private final String description;
 
+    /**
+     * HospitalMenu constructor
+     * @param description 
+     */
     HospitalMenu(String description) {
         this.description = description;
     }

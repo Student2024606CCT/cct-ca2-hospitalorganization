@@ -3,6 +3,13 @@ package cctcollege.util;
 import cctcollege.model.Employee;
 import java.util.ArrayList;
 
+/**
+ * 
+ * Custom list for storing Employee objects. 
+ * Inherits from ArrayList and adds quicksort and search features.
+ *
+ * @author asafeds
+ */
 public class MyEmployeeList 
         extends ArrayList<Employee> 
         implements QuickSort,Search<Employee>{
@@ -32,6 +39,13 @@ public class MyEmployeeList
         isSorted = Boolean.TRUE;
     }
 
+    /**
+     * Recursively sorts the list using quicksort. 
+     * Splits the list around a pivot and sorts each part.
+     *
+     * @param low
+     * @param high
+     */
     private void qsRecursive(int low, int high) {
         if (low < high) {
             int pivotIndex = qsPartition(low, high);
@@ -41,6 +55,15 @@ public class MyEmployeeList
         }
     }
     
+    /**
+     * Does the partitioning part of quicksort. 
+     * Puts everything smaller than the pivot to the left, 
+     * and bigger things to the right
+     * 
+     * @param low
+     * @param high
+     * @return the index where the pivot ends up
+     */
     private int qsPartition(int low, int high) {
         Employee pivot = this.get(high); // Choose the last element as pivot
         int i = low - 1; // Index of the smaller element
@@ -55,6 +78,12 @@ public class MyEmployeeList
         return i + 1;
     }
 
+    /**
+     * Swaps two employees in the list at positions i and j.
+     *
+     * @param i
+     * @param j
+     */
     private void qsSwap(int i, int j) {
         Employee temp = this.get(i);
         this.set(i, this.get(j));
@@ -77,6 +106,7 @@ public class MyEmployeeList
         if (index >= size()) return null;
         // Found the employee
         Employee employee = this.get(index);
+        //Comparting names
         if (employee.getName().equalsIgnoreCase(name)) return employee;
         // Recurse to the next index
         return linearSearchRecursive(name, index + 1);
@@ -98,6 +128,7 @@ public class MyEmployeeList
         if (low > high) return null; // Base case: name not found
         int mid = (low + high) / 2;
         Employee midEmployee = this.get(mid);
+        //Comparing names
         int comparison = midEmployee.getName().compareToIgnoreCase(name);
         if (comparison == 0) {
             // Name found

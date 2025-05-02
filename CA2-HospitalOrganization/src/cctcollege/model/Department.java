@@ -1,7 +1,9 @@
 package cctcollege.model;
 
 /**
- *
+ * 
+ * Enum Department
+ * 
  * @author asafeds
  */
 public enum Department {
@@ -32,17 +34,22 @@ public enum Department {
     
     private final String name;
 
+    /**
+     * Department Constructor
+     * @param name 
+     */
     private Department(String name) {
         this.name = name;
     }
 
+    /**
+     * Return name when parse Department to string
+     * @return 
+     */
     @Override
     public String toString() {
         return name;
     }
-    
-    
-    
     
     
 }

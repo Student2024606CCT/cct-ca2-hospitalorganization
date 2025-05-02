@@ -14,7 +14,12 @@ import cctcollege.view.HospitalSystemView;
  */
 public class CA2HospitalOrganization {
 
-    
+    /**
+     * 
+     * Executable method
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         // Setting variables ...
         HospitalSystemController controller = new HospitalSystemController();
