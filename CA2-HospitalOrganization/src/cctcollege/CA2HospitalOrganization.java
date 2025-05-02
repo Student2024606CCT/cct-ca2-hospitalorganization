@@ -22,11 +22,18 @@ public class CA2HospitalOrganization {
         
         // Starting system | Configuration menu ... 
         view.showConfigurationMenu();
-        controller.loadEmployeesFromFile();
-        view.displayFileLoadedSuccessfuly();
+        while(true){ //while until get valid file
+            String file = view.askForFileName(); //get file name
+            Boolean fileLoaded = controller.loadEmployeesFromFile(file);
+            if(fileLoaded){ // if file went loaded, move forward
+                view.displayFileLoadedSuccessfuly(file);
+                break;
+            }
+        }
         
         // Main menu ... 
         while(true) {
+            // Menu options from enum HospitalMenu;
             HospitalMenu menuOption = view.showMenu();
             if(menuOption == null) continue; //Invalid user choice
             switch (menuOption) {
@@ -55,12 +62,12 @@ public class CA2HospitalOrganization {
                     view.displayEmployeeAddedSuccessfuly(randomOne);
                     view.displayEmployee(randomOne);
                 }case HospitalMenu.EXIT -> {
-                    return;
+                    return; //close system
                 }
             }
         }
         
-        
+        //End
     }
     
 }

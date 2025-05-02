@@ -12,6 +12,8 @@ import java.util.Scanner;
  */
 public class HospitalSystemView {
 
+    private static final String DEFAULT_FILE = "default_applicants_form.txt";
+    
     private final Scanner scanner;
 
     public HospitalSystemView() {
@@ -24,15 +26,14 @@ public class HospitalSystemView {
         menuChoice = (HospitalMenu) askFromEnumOptions(HospitalMenu.values());
         System.out.println("=========================================");
         return menuChoice;
-
     }
-
+    
     public void showConfigurationMenu() {
-        System.out.println("============ HOSPITAL SYSTEM ============");
-        System.out.println(" PRESS 'ENTER' TO LOAD NAMES FROM FILE ");
-        System.out.println("     (File: Applicants_Form.txt)   ");
-        System.out.print("=========================================");
-        scanner.nextLine();
+        System.out.println("============= HOSPITAL SYSTEM ============");
+        System.out.println("ENTER THE FILE NAME (FULL PATH) TO LOAD ");
+        System.out.println("OR PRESS 'ENTER' TO USE DEFAULT FILE");
+        System.out.println("e.g.: /Users/student/Desktop/myfile.txt");
+        System.out.println("==========================================");
     }
 
     public void displayEmployees(List<Employee> list) {
@@ -65,8 +66,8 @@ public class HospitalSystemView {
         scanner.nextLine();
     }
 
-    public void displayFileLoadedSuccessfuly() {
-        System.out.println("[ File loaded successfully ]");
+    public void displayFileLoadedSuccessfuly(String file) {
+        System.out.printf("[ File \"%s\" loaded successfully ]\n",file);
     }
 
     public void displaySortSuccessfuly() {
@@ -80,6 +81,13 @@ public class HospitalSystemView {
             employee.getManagerType(),
             employee.getDepartmentType()
         );
+    }
+    
+    public String askForFileName(){
+        System.out.print("=>");
+        String file = scanner.nextLine();
+        // If 'file' is blank return default file name
+        return file.trim().equalsIgnoreCase("") ? DEFAULT_FILE : file; 
     }
 
     public Department askForDepartment() {
