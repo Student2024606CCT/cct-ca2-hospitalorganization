@@ -1,5 +1,5 @@
 
-package cctcollege.view;
+package CA_2;
 
 /**
  *

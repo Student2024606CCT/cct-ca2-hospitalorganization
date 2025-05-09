@@ -1,8 +1,6 @@
 
-package cctcollege.util;
+package CA_2;
 
-import cctcollege.model.Department;
-import cctcollege.model.Manager;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;

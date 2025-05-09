@@ -1,11 +1,4 @@
-package cctcollege;
-
-import cctcollege.controller.HospitalSystemController;
-import cctcollege.model.Department;
-import cctcollege.model.Employee;
-import cctcollege.model.Manager;
-import cctcollege.view.HospitalMenu;
-import cctcollege.view.HospitalSystemView;
+package CA_2;
 
 /**
  * Main class

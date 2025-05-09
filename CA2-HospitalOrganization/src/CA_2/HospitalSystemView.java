@@ -1,8 +1,5 @@
-package cctcollege.view;
+package CA_2;
 
-import cctcollege.model.Department;
-import cctcollege.model.Employee;
-import cctcollege.model.Manager;
 import java.util.List;
 import java.util.Scanner;
 

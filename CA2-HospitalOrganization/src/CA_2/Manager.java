@@ -1,4 +1,4 @@
-package cctcollege.model;
+package CA_2;
 
 /**
  *

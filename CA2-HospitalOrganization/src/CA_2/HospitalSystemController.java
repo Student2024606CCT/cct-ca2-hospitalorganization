@@ -1,10 +1,5 @@
-package cctcollege.controller;
+package CA_2;
 
-import cctcollege.model.Department;
-import cctcollege.model.Employee;
-import cctcollege.model.Manager;
-import cctcollege.util.MyEmployeeList;
-import cctcollege.util.GenerateRandomEmployeeUtil;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
